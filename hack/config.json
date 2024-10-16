@@ -1,0 +1,8 @@
+{
+  "targetHost": "alteraeon.com",
+  "targetPort": 3103,
+  "telnetPort": 8444,
+  "socketPort": 8081,
+  "cert": "../../ssl/cert.pem",
+  "key": "../../ssl/key.pem"
+}

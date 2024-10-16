@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlterProx</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <h1>AlterProx Web Client</h1>
+
+      <p id="status">Connecting...</p>
+    </header>
+
+    <div class="container">
+	<div class="content-container" id="content_container">
+		<pre id="content"></pre>
+	</div>
+      
+      <div class="disabled" id="bars_container">
+        <div class="bars">
+          <div class="bar">
+            <div class="fill gld-bar" id="gld"></div>
+            <span id="gld_text">0 gld</span>
+          </div>
+          <div class="bar mid-bar">
+            <div class="fill nmy-bar" id="nmy" style="width: 0%;"></div>
+            <span id="nmy_text">No enemy</span>
+          </div>
+          <div class="bar">
+            <div class="fill xp-bar" id="xp"></div>
+            <span id="xp_text">0 xp</span>
+          </div>
+        </div>
+
+        <div class="bars">
+          <div class="bar">
+            <div class="fill mn-bar" id="mn"></div>
+            <span id="mn_text">0/0 mn</span>
+          </div>
+          <div class="bar mid-bar">
+            <div class="fill hp-bar" id="hp"></div>
+            <span id="hp_text">0/0 hp</span>
+          </div>
+          <div class="bar">
+            <div class="fill mv-bar" id="mv"></div>
+            <span id="mv_text">0/0 mv</span>
+          </div>
+        </div>
+      </div>
+      <textarea id="input" placeholder="Type a message..." autofocus disabled spellcheck="false"></textarea>
+    </div>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
+

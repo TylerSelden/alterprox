@@ -1,0 +1,135 @@
+body {
+    background-color: #202020;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+header {
+    padding: 20px;
+    padding-bottom: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+#status {
+    font-weight: bold;
+    margin: 0; /* Ensure no unwanted margins */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: hidden;
+    padding: 0 20px 20px; /* Add padding directly to the container */
+    box-sizing: border-box;
+}
+
+.content-container {
+    flex-grow: 1;
+    overflow: auto;
+    width: fit-content;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    max-width: 100%;
+    background-color: #2a2a2a;
+    box-sizing: border-box;
+}
+
+#content {
+    word-break: break-all;
+    background-color: #2a2a2a;
+    padding: 10px;
+    font-family: monospace, monospace;
+    width: 80ch;
+    font-size: 0.9em;
+    white-space: pre-wrap;
+}
+
+.bars {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 10px;
+    height: 20px;
+}
+
+.bar {
+    background-color: #444;
+    border-radius: 3px;
+    height: 100%;
+    position: relative;
+}
+
+.mid-bar {
+    width: 50% !important;
+}
+
+.bar {
+  width: 25%;
+}
+
+.fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.hp-bar  { background-color: #e74c3c; }
+.mn-bar  { background-color: #3498db; }
+.mv-bar  { background-color: #f39c12; }
+.gld-bar { background-color: #efc700; }
+.nmy-bar { background-color: #8a2b21; }
+.xp-bar  { background-color: #32a852; }
+
+
+
+.bar span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 0.9em;
+    overflow: hidden;
+    white-space: nowrap;
+    pointer-events: none; /* Prevents text from interfering with bar interaction */
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.7); /* Ensure text is readable */
+}
+
+#input {
+    height: 60px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+    flex-shrink: 0; /* Prevent the textarea from shrinking */
+    font-size: 1em;
+}
+
+#input:focus {
+    outline: none;
+}
+
+#input::placeholder {
+    color: #ccc;
+}
+
+*:disabled, .disabled {
+  filter: brightness(85%);
+}
+
+.password {
+  color: transparent !important;
+  caret-color: transparent !important;
+}

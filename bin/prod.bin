@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "Removing old backup"
+rm -rf /var/www/html/alter/old
+mkdir /var/www/html/alter/old
+
+echo "Pushing dev to prod"
+cp /var/www/html/alter/* /var/www/html/alter/old
+cp ./web/* /var/www/html/alter
+
+echo "Done"
