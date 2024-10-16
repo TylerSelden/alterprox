@@ -47,7 +47,6 @@ function connect() {
     elems.input.disabled = true;
     elems.bars_container.classList.add("disabled");
   }
-  window.socket = socket;
 }
 
 
