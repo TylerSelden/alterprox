@@ -9,7 +9,9 @@ var historyIndex = -1;
 var config = {
   echo: true
 }
-var kxwt = {};
+var kxwt = {
+  effects: {}
+};
 var buffer = "";
 
 if (localStorage.getItem('msgHistory')) {
@@ -45,6 +47,7 @@ function connect() {
   socket.onclose = () => {
     elems.status.innerText = "Disconnected";
     elems.input.disabled = true;
+    elems.input.value = "";
     elems.bars_container.classList.add("disabled");
   }
 }
@@ -97,13 +100,9 @@ function processCmd(msg) {
   for (var line of dataLines) {
     if (!line.startsWith("kxwt")) continue;
 
-
+    console.log(line);
     line = line.replace("kxwt_", "").split(' ');
     if (kxwtTriggers[line[0]]) kxwtTriggers[line[0]](line);
-
-    //if (line == "kxwt_supported") {
-    //  sendMsg("set kxwt on");
-    //}
   }
 
   return buffer;
@@ -173,6 +172,12 @@ function handleKeydown(evt) {
   }
 }
 
+function cap(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+function fcap(str) {
+  return str.split(' ').map(w => w.length > 2 ? cap(w) : w).join(' ');
+}
 
 var kxwtTriggers = {
   supported: (cmd) => {
@@ -205,12 +210,63 @@ var kxwtTriggers = {
 
     elems.nmy.style.width = `${Math.min(cmd[1], 100)}%`;
     var name = cmd.slice(3).join(' ');
-    name = name.charAt(0).toUpperCase() + name.slice(1);
+    name = cap(name);
 
     if (cmd[1] == 999) {
       return elems.nmy_text.innerText = `${name}: ${cmd[1]}`;
     }
-    console.log(`  ASDF: ${cmd}`);
     elems.nmy_text.innerText = `${name}: ${cmd[1]}%`;
+  },
+  myname: (cmd) => {
+    kxwt.myname = cap(cmd[1]);
+    refresh_sidebar();
+  },
+  rshort: (cmd) => {
+    kxwt.area = cmd.slice(1).join(' ');
+    refresh_sidebar();
+  },
+  position: (cmd) => {
+    kxwt.pos = cmd[1];
+    refresh_sidebar();
+  },
+  time: (cmd) => {
+    kxwt.timeName = cap(cmd[2]);
+    kxwt.timeLong = `${cmd[3]} ${cmd[4]}`;
+
+    refresh_sidebar();
+  },
+  spst: (cmd) => {
+    var name = cmd[1].substring(0, cmd[1].indexOf(','));
+    kxwt.effects[name] = cmd.slice(2).join(' ');
+    refresh_sidebar();
+  },
+  spellup: (cmd) => {
+    kxwt.effects[cmd[1]] = "New";
+    refresh_sidebar();
+  },
+  spelldn: (cmd) => {
+    delete kxwt.effects[cmd[1].substring(0, cmd[1].indexOf(','))];
+    refresh_sidebar();
   }
+}
+
+function refresh_sidebar() {
+  if (!kxwt.myname || !kxwt.area || !kxwt.timeName || !kxwt.pos) return;
+  elems.side_panel.style.display = "flex";
+
+  elems.kxwt_header.innerText = `${kxwt.myname} - ${kxwt.area}`;
+  elems.kxwt_time.innerHTML = `<i>${kxwt.timeName}</i> - ${kxwt.timeLong}`;
+  elems.kxwt_pos.innerText = kxwt.pos;
+
+  console.log(kxwt.effects);
+  if (Object.keys(kxwt.effects).length == 0) {
+    return elems.effects.innerHTML = "<p><i>None</i></p>";
+  }
+
+  var effectsElem = "";
+  for (var i in kxwt.effects) {
+    if (parseInt(kxwt.effects[i].split(' ')[0]) == 0) delete kxwt.effects[i];
+    effectsElem += `<p><b>${cap(i)}:</b> ${kxwt.effects[i]}</p>`
+  }
+  elems.effects.innerHTML = effectsElem;
 }

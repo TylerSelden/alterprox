@@ -14,10 +14,44 @@
     </header>
 
     <div class="container">
-	<div class="content-container" id="content_container">
-		<pre id="content"></pre>
-	</div>
-      
+      <div class="main-wrapper">
+        <div class="content-container" id="content_container">
+          <pre id="content"></pre>
+        </div>
+        <div class="side-panel" id="side_panel" style="display:none;">
+          <!-- Yes, that's right. I'm using <center>.
+              I do not care what you think.
+              <center> is a good tag. It's helpful.
+              Better than writing a bunch of useless
+              CSS that could be done in 8 characters.
+
+              See: https://stackoverflow.com/a/57860414
+                                                         -->
+
+
+          <div>
+            <div><center style="width:100%;"><h3 id="kxwt_header">Loading</h3></center></div>
+          </div>
+          <div>
+            <div><p id="kxwt_time">Loading<i></i></p></div>
+            <div><p>You are <b id="kxwt_pos">loading</b>.</p></div>
+          </div>
+
+          <div>
+            <div class="effects">
+              <h3>Effects:</h3>
+
+              <div id="effects">
+                <p><i>None</i></p>
+                <p><b>Fly:</b> 5 hours</p>
+                <p><b>Bless:</b> 4 hours</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
       <div class="disabled" id="bars_container">
         <div class="bars">
           <div class="bar">
