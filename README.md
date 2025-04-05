@@ -45,4 +45,4 @@ A standard `config.json` file would look something like this:
 
 ## Notes
 
-This is _clearly_ a work in progress. If you notice any bugs or have any suggestions/ideas, please feel free to open an issue or pull request, I'll take a look and do my best to fix it.
+This is _clearly_ a work in progress. If you notice any bugs or have any suggestions/ideas, please feel free to open an issue or pull request, I'll take a look and do my best to work on it.
