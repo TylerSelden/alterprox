@@ -37,10 +37,10 @@ A standard `config.json` file would look something like this:
 
 **What each key/value pair means:**
 
-`targetHost`: This is the hostname of the target telnet host (in this case, Alter Aeon).
-`targetPort`: The port to use for that hostname.
-`socketPort`: The local port to run the WebSocket server on.
-`cert`/`key`: The file path to SSL certificate and key files.
+- `targetHost`: This is the hostname of the target telnet host (in this case, Alter Aeon).
+- `targetPort`: The port to use for that hostname.
+- `socketPort`: The local port to run the WebSocket server on.
+- `cert`/`key`: The file path to SSL certificate and key files.
 
 
 ## Notes
