@@ -39,7 +39,7 @@ var tcpServer = tls.createServer(options, (clientSocket) => {
   });
 });
 
-tcpServer.listen(config.telnetPort, () => {
+tcpServer.listen(() => {
   console.log(`SSL Proxy to ${config.targetHost}:${config.targetPort} listening on port ${config.telnetPort}`);
 });
 

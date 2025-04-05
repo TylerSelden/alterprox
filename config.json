@@ -1,8 +1,7 @@
 {
   "targetHost": "alteraeon.com",
   "targetPort": 3000,
-  "telnetPort": 8443,
   "socketPort": 8080,
-  "cert": "../ssl/cert.pem",
-  "key": "../ssl/key.pem"
+  "cert": "../ssl/fullchain.pem",
+  "key": "../ssl/privkey.pem"
 }
