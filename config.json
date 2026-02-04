@@ -1,7 +1,5 @@
 {
   "targetHost": "alteraeon.com",
   "targetPort": 3000,
-  "socketPort": 8001,
-  "cert": "../ssl/fullchain.pem",
-  "key": "../ssl/privkey.pem"
+  "socketPort": 8001
 }

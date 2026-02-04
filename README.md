@@ -20,7 +20,7 @@ If you do choose to set this up yourself, here's a basic list of steps:
 1. Clone the repository: `git clone https://github.com/TylerSelden/alterprox`.
 2. Enter the directory and run `npm i` to install necessary packages.
 3. Modify the `config.json` file to meet your needs (more info below).
-4. Start the server with `node index.js`.
+4. Start the server with `npm start`.
 
 **Note:** Make sure you're serving the `web/` directory somewhere, and that you modify the websocket URL in it.
 
@@ -32,9 +32,7 @@ A standard `config.json` file would look something like this:
 {
   "targetHost": "alteraeon.com",
   "targetPort": 3000,
-  "socketPort": 8080,
-  "cert": "../ssl/fullchain.pem",
-  "key": "../ssl/privkey.pem"
+  "socketPort": 8080
 }
 ```
 
@@ -43,8 +41,6 @@ A standard `config.json` file would look something like this:
 - `targetHost`: This is the hostname of the target telnet host (in this case, Alter Aeon).
 - `targetPort`: The port to use for that hostname.
 - `socketPort`: The local port to run the WebSocket server on.
-- `cert`/`key`: The file path to SSL certificate and key files.
-
 
 ## Notes
 

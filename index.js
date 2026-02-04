@@ -2,15 +2,10 @@ const net = require('net');
 const tls = require('tls');
 const fs = require('fs');
 const WebSocketServer = require('websocket').server;
-const https = require('https');
+const http = require('http');
 const config = require("./config.json");
 
-const options = {
-  key: fs.readFileSync(config.key),
-  cert: fs.readFileSync(config.cert),
-};
-
-var tcpServer = tls.createServer(options, (clientSocket) => {
+var tcpServer = tls.createServer((clientSocket) => {
   const targetSocket = net.createConnection({ host: config.targetHost, port: config.targetPort }, () => {
     console.log('Connected to the target server.');
   });
@@ -40,14 +35,14 @@ var tcpServer = tls.createServer(options, (clientSocket) => {
 });
 
 tcpServer.listen(() => {
-  console.log(`SSL Proxy to ${config.targetHost}:${config.targetPort} listening on port ${config.telnetPort}`);
+  console.log(`Proxy to ${config.targetHost}:${config.targetPort} listening on port ${config.socketPort}`);
 });
 
 
 
 
 
-const httpServer = https.createServer(options);
+const httpServer = http.createServer();
 
 const wsServer = new WebSocketServer({
   httpServer: httpServer
@@ -71,7 +66,7 @@ wsServer.on('request', (request) => {
   });
 
   connection.on('close', () => {
-    targetSocket.end(); // close target socket
+    targetSocket.end();
   });
 
   targetSocket.on('end', () => {
