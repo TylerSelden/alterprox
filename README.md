@@ -1,9 +1,9 @@
 # AlterProx
 
-**Live website:** [AlterProx](https://benti.dev/alter)
+**Live website:** [AlterProx](https://benti.dev/alterprox)
 
 
-AlterProx is a free, open-source web client for [Alter Aeon](http://alteraeon.com/). A live version is currently available [here](https://benti.dev/alter), but it should be pretty easy to run on your own, if you so choose.
+AlterProx is a free, open-source web client for [Alter Aeon](http://alteraeon.com/). A live version is currently available [here](https://benti.dev/alterprox), but it should be pretty easy to run on your own, if you so choose.
 
 ## How it works
 
