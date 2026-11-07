@@ -3,6 +3,8 @@ const tls = require('tls');
 const fs = require('fs');
 const WebSocketServer = require('websocket').server;
 const http = require('http');
+const serveStatic = require('serve-static');
+const finalhandler = require('finalhandler');
 const config = require("./config.json");
 
 var tcpServer = tls.createServer((clientSocket) => {
@@ -35,17 +37,22 @@ var tcpServer = tls.createServer((clientSocket) => {
 });
 
 tcpServer.listen(() => {
-  console.log(`Proxy to ${config.targetHost}:${config.targetPort} listening on port ${config.socketPort}`);
+  console.log(`Proxy to ${config.targetHost}:${config.targetPort} listening on port ${config.webPort}`);
 });
 
 
 
 
 
-const httpServer = http.createServer();
+const serve = serveStatic('./web');
+
+const httpServer = http.createServer((req, res) => {
+  serve(req, res, finalhandler(req, res));
+});
 
 const wsServer = new WebSocketServer({
-  httpServer: httpServer
+  httpServer: httpServer,
+  path: '/ws'
 });
 
 wsServer.on('request', (request) => {
@@ -81,6 +88,6 @@ wsServer.on('request', (request) => {
   });
 });
 
-httpServer.listen(config.socketPort, () => {
-  console.log(`WebSocket server listening on port ${config.socketPort}`);
+httpServer.listen(config.webPort, () => {
+  console.log(`Web server listening on port ${config.webPort}`);
 });

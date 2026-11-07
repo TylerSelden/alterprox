@@ -3,7 +3,7 @@ let ansi_up = new AnsiUp();
 
 let elems = {};
 let socket;
-let socketURL = "wss://backend.benti.dev:8443/alterprox";
+let socketURL = `wss://${window.location.host}/ws`;
 let msgHistory = [];
 let historyIndex = -1;
 let config = {

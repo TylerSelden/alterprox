@@ -22,7 +22,7 @@ If you do choose to set this up yourself, here's a basic list of steps:
 3. Modify the `config.json` file to meet your needs (more info below).
 4. Start the server with `npm start`.
 
-**Note:** Make sure you're serving the `web/` directory somewhere, and that you modify the websocket URL in it.
+**Note:** AlterProx now serves the web files as well as the socket server, both on the same port.
 
 ## `config.json`
 
@@ -32,7 +32,7 @@ A standard `config.json` file would look something like this:
 {
   "targetHost": "alteraeon.com",
   "targetPort": 3000,
-  "socketPort": 8080
+  "webPort": 8080
 }
 ```
 
@@ -40,7 +40,7 @@ A standard `config.json` file would look something like this:
 
 - `targetHost`: This is the hostname of the target telnet host (in this case, Alter Aeon).
 - `targetPort`: The port to use for that hostname.
-- `socketPort`: The local port to run the WebSocket server on.
+- `webPort`: The local port to run the HTTP server on.
 
 ## Notes
 
